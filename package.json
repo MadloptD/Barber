@@ -1,5 +1,5 @@
 {
-  "name": "Layout",
+  "name": "Barberershop",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -24,11 +24,13 @@
     "lint-ts": "tslint --formatters-dir node_modules/tslint-teamcity-reporter/ --format TSHintTeamcity \"src/**/*.ts\"",
     "remotedev": "npm run remotedev-revert && remotedev-debugger --injectserver --injectdebugger false --hostname localhost --port 8000",
     "remotedev-revert": "remotedev-debugger --revert",
-    "shake-android": "adb shell input keyevent 82"
+    "shake-android": "adb shell input keyevent 82",
+    "generator": "generator --dir=resources/images --out=src/common/ImageResources.g.ts"
   },
   "dependencies": {
     "react": "16.0.0-alpha.6",
     "react-native": "0.44.2",
+    "react-native-linear-gradient": "^2.0.0",
     "react-navigation": "v1.0.0-beta.11",
     "react-redux": "^5.0.5",
     "redux": "^3.6.0"
@@ -63,6 +65,11 @@
       "ts",
       "tsx",
       "js"
+    ]
+  },
+  "rnpm": {
+    "assets": [
+      "./resources/fonts"
     ]
   }
 }

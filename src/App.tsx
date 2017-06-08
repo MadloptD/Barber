@@ -1,4 +1,4 @@
 import {AppRegistry} from "react-native";
-import {LayoutFlex} from "./pages/home/LayoutFlex";
+import {LoginPage} from "./pages/LoginPage";
 
-AppRegistry.registerComponent("Layout", () => LayoutFlex);
+AppRegistry.registerComponent("Barberershop", () => LoginPage);

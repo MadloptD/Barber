@@ -20,7 +20,7 @@ interface IStateLayoutFlex {
 }
 
 
-export class LoginPage extends React.Component<IPropsLayoutFlex, IStateLayoutFlex> {
+export class MainPage extends React.Component<IPropsLayoutFlex, IStateLayoutFlex> {
     constructor(props: IPropsLayoutFlex) {
         super(props);
         this.state = {
@@ -32,8 +32,27 @@ export class LoginPage extends React.Component<IPropsLayoutFlex, IStateLayoutFle
     render(): JSX.Element {
         return (
             <View style={styles.container}>
-                <ScrollView>
-                </ScrollView>
+                <View style={{flexBasis: 44, flexDirection: "row"}}>
+                    <View style={{backgroundColor: "blue", flex: 1, alignItems: "center", justifyContent: "center"}}>
+                        <Image style = {{}}
+                            source={ ImageResources.icon_menu }
+                        />
+                    </View>
+                    <View style={{flex: 11}}>
+                        <Image
+                            resizeMode = {"contain"}
+                            source={ ImageResources.Logo }
+                        />
+                    </View>
+                </View>
+                <View style={{backgroundColor: "grey", flex: 1}}>
+                <View style={{ flex: 1}}>
+
+                </View>
+                <View style={{flex: 1}}>
+
+                </View>
+                </View>
             </View>
 
         );
@@ -44,5 +63,10 @@ const styles = {
     container: {
         flex: 1,
         position: 'relative',
+        flexDirection: "column"
+    } as ImageStyle,
+    image: {
+        width: width,
+        //height: iHeight,
     } as ImageStyle,
 };

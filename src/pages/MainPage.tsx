@@ -3,13 +3,21 @@
  */
 
 import React from "react";
-import {View, Image, ImageStyle, Dimensions, ViewStyle, TextInput, TouchableHighlight, Text, ScrollView} from "react-native";
+import {
+    View,
+    Image,
+    ImageStyle,
+    Dimensions,
+    ViewStyle,
+    Text,
+    StatusBar
+} from "react-native";
 import {ImageResources} from "../common/ImageResources.g";
 import LinearGradient from 'react-native-linear-gradient';
-
+import {Header} from "../pages/HeaderComponent";
 
 const {width} = Dimensions.get('window');
-const iHeight = width * 1334 / 750;
+const iHeight = width * 1000 / 1500;
 
 interface IPropsLayoutFlex {
 }
@@ -31,29 +39,19 @@ export class MainPage extends React.Component<IPropsLayoutFlex, IStateLayoutFlex
 
     render(): JSX.Element {
         return (
-            <View style={styles.container}>
-                <View style={{flexBasis: 44, flexDirection: "row"}}>
-                    <View style={{backgroundColor: "blue", flex: 1, alignItems: "center", justifyContent: "center"}}>
-                        <Image style = {{}}
-                            source={ ImageResources.icon_menu }
-                        />
-                    </View>
-                    <View style={{flex: 11}}>
-                        <Image
-                            resizeMode = {"contain"}
-                            source={ ImageResources.Logo }
-                        />
-                    </View>
-                </View>
-                <View style={{backgroundColor: "grey", flex: 1}}>
-                <View style={{ flex: 1}}>
 
-                </View>
-                <View style={{flex: 1}}>
+            <View>
+                <StatusBar   />
+                <Header>
 
-                </View>
+                </Header>
+                <View style={{alignItems: "center", height: 38, width: width, marginTop: 10, position: "absolute"}}>
+                    <Image source={ImageResources.Logo}
+                           style={{resizeMode: "contain", height: 30, width: width}}
+                    />
                 </View>
             </View>
+
 
         );
     }
@@ -69,4 +67,7 @@ const styles = {
         width: width,
         //height: iHeight,
     } as ImageStyle,
+    backGradient: {
+        flex: 1,
+    } as ViewStyle,
 };

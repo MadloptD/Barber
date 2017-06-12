@@ -18,6 +18,7 @@ export class ImageResources {
     static readonly 8: ImageURISource = require("../../resources/images/8.png");
     static readonly 9: ImageURISource = require("../../resources/images/9.png");
     static readonly barbershop: ImageURISource = require("../../resources/images/barbershop.png");
+    static readonly header_jpg: ImageURISource = require("../../resources/images/header.jpg");
     static readonly icon_back: ImageURISource = require("../../resources/images/icon_back.png");
     static readonly icon_facebook: ImageURISource = require("../../resources/images/icon_facebook.png");
     static readonly icon_menu: ImageURISource = require("../../resources/images/icon_menu.png");

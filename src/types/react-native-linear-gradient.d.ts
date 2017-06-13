@@ -6,6 +6,8 @@ declare module "react-native-linear-gradient" {
         colors: string[];
         locations?: number[];
         style: ViewStyle;
+        start?: {x: number, y: number};
+        end?: {x: number, y: number};
     }
 
     class LinearGradient extends Component<ILinearGradientProps, {}> {

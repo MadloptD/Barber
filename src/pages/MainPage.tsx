@@ -10,11 +10,13 @@ import {
     Dimensions,
     ViewStyle,
     Text,
-    StatusBar
+    StatusBar,
+    FlatList
 } from "react-native";
 import {ImageResources} from "../common/ImageResources.g";
 import LinearGradient from 'react-native-linear-gradient';
 import {Header} from "../pages/HeaderComponent";
+import {IPropsService, Service} from "../pages/ServiceComponent";
 
 const {width} = Dimensions.get('window');
 const iHeight = width * 1000 / 1500;
@@ -29,27 +31,87 @@ interface IStateLayoutFlex {
 
 
 export class MainPage extends React.Component<IPropsLayoutFlex, IStateLayoutFlex> {
+    data: IPropsService[];
+
     constructor(props: IPropsLayoutFlex) {
         super(props);
+        this.data = [];
+        this.setData();
         this.state = {
             loginField: "e-mail",
             passwordField: "пароль"
+
         };
+    }
+
+    renderHeader = (): JSX.Element => {
+        return <Header />;
+    };
+
+    setData(): void {
+        this.data.push({
+            image: ImageResources.p1_jpg,
+            id: 0,
+            name: "Коррекция бороды",
+            description: "Коррекция формы любой сложности",
+            price: 200,
+            duration: "20мин",
+        });
+        this.data.push({
+            image: ImageResources.p1_jpg,
+            id: 1,
+            name: "Стрижка усов",
+            description: "Коррекция формы любой сложности",
+            price: 500,
+            duration: "20мин",
+        });
+        this.data.push({
+            image: ImageResources.p2_jpg,
+            id: 2,
+            name: "Стрижка усов",
+            description: "Коррекция формы любой сложности, бережный уход, длина",
+            price: 500,
+            duration: "20мин",
+        });
+        this.data.push({
+            image: ImageResources.p4_jpg,
+            id: 3,
+            name: "Стрижка усов",
+            description: "Коррекция формы любой сложности, бережный уход, длина",
+            price: 300,
+            duration: "20мин",
+        });
+        this.data.push({
+            image: ImageResources.p5_jpg,
+            id: 4,
+            name: "Стрижка усов",
+            description: "Коррекция формы любой сложности, бережный уход, длина",
+            price: 300,
+            duration: "20мин",
+        });
     }
 
     render(): JSX.Element {
         return (
 
             <View>
-                <StatusBar   />
-                <Header>
+                <StatusBar backgroundColor="transparent" translucent={true}/>
 
-                </Header>
-                <View style={{alignItems: "center", height: 38, width: width, marginTop: 10, position: "absolute"}}>
+
+                <View style={{backgroundColor: "#464646"}}>
+                    <FlatList
+                        data={this.data}
+                        renderItem={({item}) => ( <Service {...item}/>)}
+                        keyExtractor={(item) => item.id}
+                        ListHeaderComponent = {Header}
+                    />
+                </View>
+                <View style={{alignItems: "center", height: 38, width: width, marginTop: 20, position: "absolute"}}>
                     <Image source={ImageResources.Logo}
                            style={{resizeMode: "contain", height: 30, width: width}}
                     />
                 </View>
+
             </View>
 
 

@@ -10,18 +10,20 @@ import {
     Dimensions,
     ViewStyle,
     TextInput,
-    TouchableHighlight,
     Text,
     TouchableOpacity
 } from "react-native";
 import {ImageResources} from "../common/ImageResources.g";
 import LinearGradient from 'react-native-linear-gradient';
+import {INavigationProps, Navigation} from "../navigation/Navigation";
 
 
 const {width} = Dimensions.get('window');
 const iHeight = width * 1334 / 750;
 
 interface IPropsLayoutFlex {
+    navigation?: INavigationProps<any>;
+
 }
 
 interface IStateLayoutFlex {
@@ -37,6 +39,11 @@ export class LoginPage extends React.Component<IPropsLayoutFlex, IStateLayoutFle
             loginField: "e-mail",
             passwordField: "пароль"
         };
+    }
+
+    onLoginButtonPress(): void {
+        const {navigation} = this.props;
+        navigation && navigation.dispatch(Navigation.Actions.login());
     }
 
     render(): JSX.Element {
@@ -75,15 +82,19 @@ export class LoginPage extends React.Component<IPropsLayoutFlex, IStateLayoutFle
                                    secureTextEntry={true}
                         />
                         <View style={styles.underlinePassword}/>
+
+                        <TouchableOpacity
+                            onPress = {(): void => this.onLoginButtonPress() }>
                         <View style={styles.confirmButton}>
-                            <TouchableHighlight>
+
                                 <Text style={styles.confirmButtonText}>войти</Text>
-                            </TouchableHighlight>
+
                         </View>
+                        </TouchableOpacity>
                         <View style={{alignItems: "flex-end"}}>
-                            <TouchableHighlight>
+                            <TouchableOpacity>
                                 <Text style={styles.registryButtonText}>регистрация</Text>
-                            </TouchableHighlight>
+                            </TouchableOpacity>
                         </View>
                     </View>
                     <View style={styles.socContainer}>

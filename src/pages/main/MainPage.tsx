@@ -13,27 +13,29 @@ import {
     StatusBar,
     FlatList
 } from "react-native";
-import {ImageResources} from "../common/ImageResources.g";
+import {ImageResources} from "../../common/ImageResources.g";
 import LinearGradient from 'react-native-linear-gradient';
-import {Header} from "../pages/HeaderComponent";
-import {IPropsService, Service} from "../pages/ServiceComponent";
+import {Header} from "../HeaderComponent";
+import {IPropsService, Service} from "../ServiceComponent";
+import {INavigationProps, Navigation} from "../../navigation/Navigation";
 
 const {width} = Dimensions.get('window');
 const iHeight = width * 1000 / 1500;
 
-interface IPropsLayoutFlex {
+interface IPropsMain {
+    navigation?: INavigationProps<any>;
 }
 
-interface IStateLayoutFlex {
+interface IStateMain {
     loginField: string;
     passwordField: string;
 }
 
 
-export class MainPage extends React.Component<IPropsLayoutFlex, IStateLayoutFlex> {
+export class MainPage extends React.Component<IPropsMain, IStateMain> {
     data: IPropsService[];
 
-    constructor(props: IPropsLayoutFlex) {
+    constructor(props: IPropsMain) {
         super(props);
         this.data = [];
         this.setData();

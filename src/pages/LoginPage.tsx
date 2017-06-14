@@ -75,9 +75,9 @@ export class LoginPage extends React.Component<IPropsLayoutFlex, IStateLayoutFle
                                    secureTextEntry={true}
                         />
                         <View style={styles.underlinePassword}/>
-                        <View style={styles.loginButton}>
+                        <View style={styles.confirmButton}>
                             <TouchableHighlight>
-                                <Text style={styles.loginButtonText}>войти</Text>
+                                <Text style={styles.confirmButtonText}>войти</Text>
                             </TouchableHighlight>
                         </View>
                         <View style={{alignItems: "flex-end"}}>
@@ -118,7 +118,7 @@ const styles = {
     socButtonsWrapper: {
         padding: 7,
     } as ViewStyle,
-    loginButton: {
+    confirmButton: {
         alignItems: "center",
         height: 44,
         backgroundColor: "#B09B7A",
@@ -130,7 +130,7 @@ const styles = {
         fontFamily: "OpenSans-Regular",
         fontSize: 14
     } as ImageStyle,
-    loginButtonText: {
+    confirmButtonText: {
         paddingTop: 8,
         color: "white",
         fontFamily: "OpenSans-Regular",

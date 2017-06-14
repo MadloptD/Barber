@@ -104,6 +104,7 @@ export class MainPage extends React.Component<IPropsLayoutFlex, IStateLayoutFlex
                         renderItem={({item}) => ( <Service {...item}/>)}
                         keyExtractor={(item) => item.id}
                         ListHeaderComponent = {Header}
+
                     />
                 </View>
                 <View style={{alignItems: "center", height: 38, width: width, marginTop: 20, position: "absolute"}}>

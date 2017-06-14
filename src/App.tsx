@@ -4,4 +4,4 @@ import {MainPage} from "./pages/MainPage";
 import {TryFlat} from "./pages/TryFlat";
 import {ServicePage} from "./pages/ServicePage";
 
-AppRegistry.registerComponent("Barberershop", () => ServicePage);
+AppRegistry.registerComponent("Barberershop", () => LoginPage);

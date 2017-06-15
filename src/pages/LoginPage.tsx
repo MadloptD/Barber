@@ -16,35 +16,63 @@ import {
 import {ImageResources} from "../common/ImageResources.g";
 import LinearGradient from 'react-native-linear-gradient';
 import {INavigationProps, Navigation} from "../navigation/Navigation";
+import {request} from "../common/api";
+import Toast from 'react-native-simple-toast';
+
 
 
 const {width} = Dimensions.get('window');
 const iHeight = width * 1334 / 750;
 
-interface IPropsLayoutFlex {
+interface IPropsLoginPage {
     navigation?: INavigationProps<any>;
 
 }
 
-interface IStateLayoutFlex {
+interface IStateLoginPage {
     loginField: string;
     passwordField: string;
 }
 
 
-export class LoginPage extends React.Component<IPropsLayoutFlex, IStateLayoutFlex> {
-    constructor(props: IPropsLayoutFlex) {
+export class LoginPage extends React.Component<IPropsLoginPage, IStateLoginPage> {
+
+    url: string;
+    constructor(props: IPropsLoginPage) {
         super(props);
+
         this.state = {
             loginField: "e-mail",
             passwordField: "пароль"
         };
     }
 
-    onLoginButtonPress(): void {
-        const {navigation} = this.props;
-        navigation && navigation.dispatch(Navigation.Actions.login());
+    async onLoginButtonPress(): Promise<void> {
+        try {
+            const result = await request.userApiRequest.login({
+                // login: this.state.loginField,
+                // password: this.state.passwordField
+                login: "user2",
+                 password: "user2pass",
+            });
+            console.log(result);
+            if (result) {
+                this.setState({loginField: "", passwordField: ""});
+                const {navigation} = this.props;
+                navigation && navigation.dispatch(Navigation.Actions.login());
+            }
+        } catch (e) {
+            if (e == "Network request failed") Toast.show(e);
+            if (e.status == "404") Toast.show("Ошибка авторизации");
+
+            console.log(e);
+        }
+
+
     }
+
+
+
 
     render(): JSX.Element {
         return (
@@ -72,6 +100,7 @@ export class LoginPage extends React.Component<IPropsLayoutFlex, IStateLayoutFle
                                    placeholderTextColor={"#A5A5A5"}
                                    placeholder={"e-mail"}
                                    selectionColor={"#A5A5A5"}
+                                   onChangeText={(text) => this.setState({loginField: text})}
                         />
                         <View style={styles.underlineLogin}/>
                         <TextInput underlineColorAndroid={"rgba(0,0,0,0)"}
@@ -80,11 +109,12 @@ export class LoginPage extends React.Component<IPropsLayoutFlex, IStateLayoutFle
                                    placeholderTextColor={"#A5A5A5"}
                                    selectionColor={"#A5A5A5"}
                                    secureTextEntry={true}
+                                   onChangeText={(text) => this.setState({passwordField: text})}
                         />
                         <View style={styles.underlinePassword}/>
 
                         <TouchableOpacity
-                            onPress = {(): void => this.onLoginButtonPress() }>
+                            onPress = {(): Promise<void> => this.onLoginButtonPress() }>
                         <View style={styles.confirmButton}>
 
                                 <Text style={styles.confirmButtonText}>войти</Text>

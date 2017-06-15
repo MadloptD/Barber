@@ -16,20 +16,26 @@ import {
     TouchableHighlight,
     TouchableOpacity
 } from "react-native";
-import {ImageResources} from "../common/ImageResources.g";
+import {ImageResources} from "../../common/ImageResources.g";
 import LinearGradient from 'react-native-linear-gradient';
-import {Header} from "../pages/HeaderComponent";
-import {IPropsService, Service} from "../pages/ServiceComponent";
-import {DaySelect} from "../pages/DaySelectComponent"
-import {ServiceTime} from "../pages/ServiceTime"
+import {Header} from "../HeaderComponent";
+import {IPropsService, Service} from "../ServiceComponent";
+import {DaySelect} from "../DaySelectComponent"
+import {ServiceTime} from "../ServiceTime"
 const {width} = Dimensions.get('window');
-
+import {INavigationProps, Navigation} from "../../navigation/Navigation";
+import { Job } from "../../core/api/dto/Job.g";
+import {request} from "../../common/api";
+import { JobSchedule } from "../../core/api/dto/JobSchedule.g";
 
 interface IPropsServicePage {
+    navigation?: INavigationProps<{job: Job}>;
 }
 
 interface IStateServicePage {
     pressStatus: boolean;
+    job: Job;
+    times: JobSchedule;
 }
 
 interface IPropsDays {
@@ -191,19 +197,22 @@ export class ServicePage extends React.Component<IPropsServicePage, IStateServic
         this.price = 145;
         this.state = {
             pressStatus: false,
+            job: this.props.navigation && this.props.navigation.state.params.job,
+            times: {times: []}
         }
+        this.getTime();
     }
 
-    onHideUnderlay(): void {
-        this.setState({pressStatus: false});
+    componentWillMount(): void {
+        this.setState({times: {times: []}});
     }
 
-    onShowUnderlay(): void {
-        this.setState({pressStatus: true});
-    }
 
-    onPress(): void {
-        this.setState({pressStatus: !this.state.pressStatus});
+
+    async getTime() {
+        const result = await request.jobApiRequest.getSchedule({serviceId: this.state.job.id, date: (new Date())});
+        console.log(result);
+        this.setState({times: result});
     }
 
     render(): JSX.Element {
@@ -233,10 +242,14 @@ export class ServicePage extends React.Component<IPropsServicePage, IStateServic
                 </View>
                 <View style={{flex: 3, justifyContent: "space-around"}}>
                     <View style={{flexDirection: "row", justifyContent: "space-around"}}>
-                        <ServiceTime textTime="08:00" isFree={true}/>
-                        <ServiceTime textTime="09:00" isFree={false}/>
-                        <ServiceTime textTime="10:00" isFree={true}/>
-                        <ServiceTime textTime="11:00" isFree={true}/>
+
+                        <FlatList
+                            numColumns = {4}
+                            data={this.state.times.times}
+                            renderItem={({item}) => ( <ServiceTime isFree={item.free} textTime={item.value.substring(0,5)}/>)}
+                            keyExtractor={(item) => item.index}
+
+                        />
                     </View>
 
                 </View>

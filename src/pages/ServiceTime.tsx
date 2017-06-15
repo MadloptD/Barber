@@ -29,6 +29,7 @@ export class ServiceTime extends React.Component<IPropsServiceTime, IStateServic
 
     }
 
+
     setTouchableStatus(): void {
         if (!this.props.isFree) {
             this.state = ({pressStatus: true});

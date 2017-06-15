@@ -84,10 +84,9 @@ export class MainPage extends React.Component<IPropsMain, IStateMain> {
                 <View style={{backgroundColor: "#464646"}}>
                     <FlatList
                         data={this.state.Jobs}
-                        renderItem={({item}) => ( <Service Job={item}/>)}
+                        renderItem={({item}) => ( <Service Job={item} navigation={this.props.navigation}/>)}
                         keyExtractor={(item) => item.id}
                         ListHeaderComponent = {Header}
-
                     />
                 </View>
                 <View style={{alignItems: "center", height: 38, width: width, marginTop: 20, position: "absolute"}}>

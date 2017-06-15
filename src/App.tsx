@@ -1,5 +1,5 @@
 import {AppRegistry} from "react-native";
-import {ServicePage} from "./pages/ServicePage"
+import {ServicePage} from "./pages/service/ServicePage"
 
 import {RootNavigation} from "./navigation/RootNavigation";
-AppRegistry.registerComponent("Barberershop", () => ServicePage);
+AppRegistry.registerComponent("Barberershop", () => RootNavigation);

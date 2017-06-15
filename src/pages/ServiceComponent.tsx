@@ -9,16 +9,20 @@ import {
     Dimensions,
     ViewStyle,
     Text,
+    ScaledSize,
+    TouchableOpacity
 } from "react-native";
-import LinearGradient from 'react-native-linear-gradient';
+import LinearGradient from "react-native-linear-gradient";
 import { Job } from "../core/api/dto/Job.g";
+import {INavigationProps, Navigation} from "../navigation/Navigation";
 
-const {width} = Dimensions.get('window');
-const iHeight = width * 302 / 600;
+const {width}: ScaledSize = Dimensions.get("window");
+const iHeight: number = width * 302 / 600;
 
 export interface IPropsService {
     Job: Job;
     style?: ViewStyle;
+    navigation?: INavigationProps<any>;
 }
 
 interface IStateService {
@@ -32,9 +36,15 @@ export class Service extends React.Component<IPropsService, IStateService> {
         this.state = {};
     }
 
+    onServicePress(): void {
+        const navigation = this.props.navigation;
+        navigation && navigation.dispatch(Navigation.Actions.service(this.props.Job));
+    }
+
     render(): JSX.Element {
         return (
             <View style={this.props.style}>
+                <TouchableOpacity onPress = {(): void => this.onServicePress() }>
                 <Image source={{uri: this.props.Job.imageUrl}}
                        resizeMode="cover"
                        style={{width: width - 20, height: iHeight, marginHorizontal: 10, marginVertical: 8}}>
@@ -51,18 +61,17 @@ export class Service extends React.Component<IPropsService, IStateService> {
                                     <Text style={styles.serviceNamePrice}>{this.props.Job.name}</Text>
                                     <Text style={styles.serviceNamePrice}>{this.props.Job.price}p</Text>
                                 </View>
-                                <View style = {{height: 1, width: width - 20, backgroundColor: "white"}}>
-                                </View>
+                                <View style = {{height: 1, width: width - 20, backgroundColor: "white"}}/>
                                 <View style={{flexDirection: "row", justifyContent: "space-between", paddingTop: 10, marginHorizontal: 10}}>
                                     <Text style={styles.serviceDescription}>{this.props.Job.description}</Text>
                                     <Text style={styles.servicePrice}>{this.props.Job.duration.toString().slice(3, 5) + "мин"}</Text>
                                 </View>
                             </View>
                         </LinearGradient>
-
                     </View>
                     </LinearGradient>
                 </Image>
+                </TouchableOpacity>
             </View>
         );
     }

@@ -97,7 +97,7 @@ export class LoginPage extends React.Component<IPropsLoginPage, IStateLoginPage>
                                    placeholderTextColor={"#A5A5A5"}
                                    placeholder={"e-mail"}
                                    selectionColor={"#A5A5A5"}
-                                   onChangeText={(text) => this.setState({loginField: text})}
+                                   onChangeText={(text: string): void => this.setState({loginField: text})}
                         />
                         <View style={styles.underlineLogin}/>
                         <TextInput underlineColorAndroid={"rgba(0,0,0,0)"}
@@ -106,7 +106,7 @@ export class LoginPage extends React.Component<IPropsLoginPage, IStateLoginPage>
                                    placeholderTextColor={"#A5A5A5"}
                                    selectionColor={"#A5A5A5"}
                                    secureTextEntry={true}
-                                   onChangeText={(text) => this.setState({passwordField: text})}
+                                   onChangeText={(text: string) => this.setState({passwordField: text})}
                         />
                         <View style={styles.underlinePassword}/>
 

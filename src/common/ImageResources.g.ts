@@ -2,38 +2,7 @@
 import {ImageURISource} from "react-native";
 
 export class ImageResources {
-    static readonly p1_jpg: ImageURISource = require("../../resources/images/1.jpg");
-    static readonly p1: ImageURISource = require("../../resources/images/1.png");
-    static readonly p10_jpg: ImageURISource = require("../../resources/images/10.jpg");
-    static readonly p10: ImageURISource = require("../../resources/images/10.png");
-    static readonly p11_jpg: ImageURISource = require("../../resources/images/11.jpg");
-    static readonly p11: ImageURISource = require("../../resources/images/11.png");
-    static readonly p12_jpg: ImageURISource = require("../../resources/images/12.jpg");
-    static readonly p12: ImageURISource = require("../../resources/images/12.png");
-    static readonly p13_jpg: ImageURISource = require("../../resources/images/13.jpg");
-    static readonly p13: ImageURISource = require("../../resources/images/13.png");
-    static readonly p14_jpg: ImageURISource = require("../../resources/images/14.jpg");
-    static readonly p14: ImageURISource = require("../../resources/images/14.png");
-    static readonly p15_jpg: ImageURISource = require("../../resources/images/15.jpg");
-    static readonly p15: ImageURISource = require("../../resources/images/15.png");
-    static readonly p2_jpg: ImageURISource = require("../../resources/images/2.jpg");
-    static readonly p2: ImageURISource = require("../../resources/images/2.png");
-    static readonly p3: ImageURISource = require("../../resources/images/3.png");
-    static readonly p4_jpg: ImageURISource = require("../../resources/images/4.jpg");
-    static readonly p4: ImageURISource = require("../../resources/images/4.png");
-    static readonly p5_jpg: ImageURISource = require("../../resources/images/5.jpg");
-    static readonly p5: ImageURISource = require("../../resources/images/5.png");
-    static readonly p6_jpg: ImageURISource = require("../../resources/images/6.jpg");
-    static readonly p6: ImageURISource = require("../../resources/images/6.png");
-    static readonly p7_jpg: ImageURISource = require("../../resources/images/7.jpg");
-    static readonly p7: ImageURISource = require("../../resources/images/7.png");
-    static readonly p8_jpg: ImageURISource = require("../../resources/images/8.jpg");
-    static readonly p8: ImageURISource = require("../../resources/images/8.png");
-    static readonly p9_jpg: ImageURISource = require("../../resources/images/9.jpg");
-    static readonly p9: ImageURISource = require("../../resources/images/9.png");
-    static readonly Barbershop_1080x540_jpg: ImageURISource = require("../../resources/images/Barbershop-1080x540.jpg");
     static readonly barbershop: ImageURISource = require("../../resources/images/barbershop.png");
-    static readonly Bearded_man_in_a_barber_shop_640x426_jpg: ImageURISource = require("../../resources/images/Bearded-man-in-a-barber-shop-640x426.jpg");
     static readonly header_jpg: ImageURISource = require("../../resources/images/header.jpg");
     static readonly icon_back: ImageURISource = require("../../resources/images/icon_back.png");
     static readonly icon_facebook: ImageURISource = require("../../resources/images/icon_facebook.png");
@@ -42,9 +11,6 @@ export class ImageResources {
     static readonly icon_vk: ImageURISource = require("../../resources/images/icon_vk.png");
     static readonly Logo: ImageURISource = require("../../resources/images/Logo.png");
     static readonly logo_barbershop: ImageURISource = require("../../resources/images/logo_barbershop.png");
-    static readonly morrismotley_main_jpg: ImageURISource = require("../../resources/images/morrismotley-main.jpg");
-    static readonly opasnaja_britva_3_jpg: ImageURISource = require("../../resources/images/opasnaja_britva_3.jpg");
     static readonly page_1_logo_: ImageURISource = require("../../resources/images/page-1-logo-.png");
     static readonly Splash_Screen: ImageURISource = require("../../resources/images/Splash Screen.png");
-    static readonly str_mash3_jpg: ImageURISource = require("../../resources/images/str_mash3.jpg");
 }

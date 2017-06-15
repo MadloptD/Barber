@@ -156,7 +156,7 @@ export class Days extends React.Component<IPropsDays, IStateDays> {
     }
 
     leapYear(year: number): boolean {
-        return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
+        return ((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0);
     }
 
     render(): JSX.Element {
@@ -219,7 +219,7 @@ export class ServicePage extends React.Component<IPropsServicePage, IStateServic
                 </View>
                 <View style={{backgroundColor: "green", flex: 3}}>
                 </View>
-                <View style={{flex: 1, alignItems: "center", justifyContent: "center",}}>
+                <View style={{flex: 1, alignItems: "center", justifyContent: "center"} }>
                     <Text style={{
                         fontSize: 22,
                         fontFamily: "KellySlab-Regular",

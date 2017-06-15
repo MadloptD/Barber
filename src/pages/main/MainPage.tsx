@@ -9,12 +9,10 @@ import {
     ImageStyle,
     Dimensions,
     ViewStyle,
-    Text,
     StatusBar,
     FlatList
 } from "react-native";
 import {ImageResources} from "../../common/ImageResources.g";
-import LinearGradient from 'react-native-linear-gradient';
 import {Header} from "../HeaderComponent";
 import {IPropsService, Service} from "../ServiceComponent";
 import {INavigationProps, Navigation} from "../../navigation/Navigation";
@@ -37,13 +35,7 @@ interface IStateMain {
 
 export class MainPage extends React.Component<IPropsMain, IStateMain> {
     data: IPropsService[];
-    componentWillMount(): void {
-        this.state = {
-            loginField: "e-mail",
-            passwordField: "пароль",
-            Jobs: [],
-        };
-    }
+
 
     constructor(props: IPropsMain) {
         super(props);
@@ -52,6 +44,14 @@ export class MainPage extends React.Component<IPropsMain, IStateMain> {
         this.getJobs();
 
 
+    }
+
+    componentWillMount(): void {
+        this.state = {
+            loginField: "e-mail",
+            passwordField: "пароль",
+            Jobs: [],
+        };
     }
 
     renderHeader = (): JSX.Element => {
@@ -72,48 +72,7 @@ export class MainPage extends React.Component<IPropsMain, IStateMain> {
         this.state.Jobs.map((data) => console.log(data));
     }
 
-    // setData(): void {
-    //     this.data.push({
-    //         image: ImageResources.p1_jpg,
-    //         id: 0,
-    //         name: "Коррекция бороды",
-    //         description: "Коррекция формы любой сложности",
-    //         price: 200,
-    //         duration: "20мин",
-    //     });
-    //     this.data.push({
-    //         image: ImageResources.p1_jpg,
-    //         id: 1,
-    //         name: "Стрижка усов",
-    //         description: "Коррекция формы любой сложности",
-    //         price: 500,
-    //         duration: "20мин",
-    //     });
-    //     this.data.push({
-    //         image: ImageResources.p2_jpg,
-    //         id: 2,
-    //         name: "Стрижка усов",
-    //         description: "Коррекция формы любой сложности, бережный уход, длина",
-    //         price: 500,
-    //         duration: "20мин",
-    //     });
-    //     this.data.push({
-    //         image: ImageResources.p4_jpg,
-    //         id: 3,
-    //         name: "Стрижка усов",
-    //         description: "Коррекция формы любой сложности, бережный уход, длина",
-    //         price: 300,
-    //         duration: "20мин",
-    //     });
-    //     this.data.push({
-    //         image: ImageResources.p5_jpg,
-    //         id: 4,
-    //         name: "Стрижка усов",
-    //         description: "Коррекция формы любой сложности, бережный уход, длина",
-    //         price: 300,
-    //         duration: "20мин",
-    //     });
-    // }
+
 
     render(): JSX.Element {
         return (
@@ -147,7 +106,7 @@ export class MainPage extends React.Component<IPropsMain, IStateMain> {
 const styles = {
     container: {
         flex: 1,
-        position: 'relative',
+        position: "relative",
         flexDirection: "column"
     } as ImageStyle,
     image: {

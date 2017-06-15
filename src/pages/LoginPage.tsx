@@ -11,18 +11,16 @@ import {
     ViewStyle,
     TextInput,
     Text,
-    TouchableOpacity
+    TouchableOpacity, ScaledSize
 } from "react-native";
 import {ImageResources} from "../common/ImageResources.g";
-import LinearGradient from 'react-native-linear-gradient';
+import LinearGradient from "react-native-linear-gradient";
 import {INavigationProps, Navigation} from "../navigation/Navigation";
 import {request} from "../common/api";
-import Toast from 'react-native-simple-toast';
+import Toast from "react-native-simple-toast";
 
-
-
-const {width} = Dimensions.get('window');
-const iHeight = width * 1334 / 750;
+const {width}: ScaledSize = Dimensions.get("window");
+const iHeight: number = width * 1334 / 750;
 
 interface IPropsLoginPage {
     navigation?: INavigationProps<any>;
@@ -49,30 +47,29 @@ export class LoginPage extends React.Component<IPropsLoginPage, IStateLoginPage>
 
     async onLoginButtonPress(): Promise<void> {
         try {
-            const result = await request.userApiRequest.login({
+
+            const result: void = await request.userApiRequest.login({
                 // login: this.state.loginField,
-                // password: this.state.passwordField
-                login: "user2",
+              //  password: this.state.passwordField
+                 login: "user2",
                  password: "user2pass",
             });
-            console.log(result);
             if (result) {
                 this.setState({loginField: "", passwordField: ""});
                 const {navigation} = this.props;
                 navigation && navigation.dispatch(Navigation.Actions.login());
             }
         } catch (e) {
-            if (e == "Network request failed") Toast.show(e);
-            if (e.status == "404") Toast.show("Ошибка авторизации");
-
-            console.log(e);
+            if (e === "Network request failed") {
+                Toast.show(e);
+            }
+            if (e.status === "404") {
+                Toast.show("Ошибка авторизации");
+            }
         }
 
 
     }
-
-
-
 
     render(): JSX.Element {
         return (
@@ -154,7 +151,7 @@ export class LoginPage extends React.Component<IPropsLoginPage, IStateLoginPage>
 const styles = {
     container: {
         flex: 1,
-        position: 'relative',
+        position: "relative",
     } as ImageStyle,
     socButtonsWrapper: {
         padding: 7,
@@ -220,7 +217,7 @@ const styles = {
         height: iHeight,
         bottom: 0,
         left: 0,
-        position: 'absolute',
+        position: "absolute",
         zIndex: 0,
         resizeMode: "contain",
         opacity: 1,
@@ -229,21 +226,19 @@ const styles = {
         flex: 1,
         flexDirection: "column",
         justifyContent: "space-around",
-        position: 'relative',
+        position: "relative",
         zIndex: 2,
         alignItems: "stretch",
     } as ViewStyle,
     loginField: {
-
-        borderColor: 'gray',
+        borderColor: "gray",
     } as ViewStyle,
     passwordField: {
 
-        borderColor: 'gray',
+        borderColor: "gray",
     } as ViewStyle,
     logo: {
 
         resizeMode: "center",
     } as ImageStyle,
-
 };

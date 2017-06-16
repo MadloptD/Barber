@@ -4,21 +4,12 @@
   ],
   "rules": {
     "adjacent-overload-signatures": true,
-    "align": [
-      true,
-      "parameters",
-      "arguments",
-      "members",
-      "elements",
-      "statements"
-    ],
     "array-type": [
       true,
       "array"
     ],
     "arrow-return-shorthand": true,
     "await-promise": true,
-    "callable-types": true,
     "class-name": true,
     "curly": true,
     "cyclomatic-complexity": true,
@@ -92,7 +83,11 @@
     "no-floating-promises": true,
     "no-for-in-array": true,
     "no-import-side-effect": true,
-    "no-inferrable-types": true,
+    "no-inferrable-types": [
+      true,
+      "ignore-properties",
+      "ignore-params"
+    ],
     "no-inferred-empty-object-type": true,
     "no-internal-module": true,
     "no-invalid-this": [
@@ -187,10 +182,7 @@
       "call-signature",
       "arrow-call-signature",
       "parameter",
-      "arrow-parameter",
       "property-declaration",
-      "variable-declaration",
-      "member-variable-declaration",
       "object-destructuring",
       "array-destructuring"
     ],

@@ -33,7 +33,7 @@ interface IStateServicePage {
 }
 
 interface IPropsDaySelect {
-    curDate?: Date;
+    curDate: Date;
     dayOfMonth?: string;
     dayOfWeek?: string;
     isSelected?: boolean;

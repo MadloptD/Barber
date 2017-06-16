@@ -64,12 +64,18 @@ const styles = {
         borderColor: '#464646',
         borderWidth: 1,
         borderRadius: 10,
+        marginVertical: 5,
     } as ViewStyle,
     buttonOff: {
+        borderWidth: 1,
+        borderRadius: 10,
+        borderColor: "transparent",
+        marginVertical: 10,
     } as ViewStyle,
     buttonPress: {
         backgroundColor: "#E5C999",
         borderRadius: 10,
+        marginVertical: 5,
     } as ViewStyle,
     text: {
         fontSize: 14,

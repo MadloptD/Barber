@@ -244,16 +244,17 @@ export class ServicePage extends React.Component<IPropsServicePage, IStateServic
                     <View style={{flexDirection: "row", justifyContent: "space-around"}}>
 
                         <FlatList
+                            columnWrapperStyle={{flex: 1, justifyContent: "space-around", alignItems: "center"}}
                             numColumns = {4}
                             data={this.state.times.times}
                             renderItem={({item}) => ( <ServiceTime isFree={item.free} textTime={item.value.substring(0,5)}/>)}
-                            keyExtractor={(item) => item.index}
+                            keyExtractor={(item) => item.value}
 
                         />
                     </View>
 
                 </View>
-                <View style={{flex: 1, paddingHorizontal: 80, justifyContent: "center",}}>
+                <View style={{flex: 1, paddingHorizontal: 80, justifyContent: "center", }}>
                     <TouchableOpacity>
                         <View style={styles.confirmButton}>
                             <Text style={styles.confirmButtonText}>Готово</Text>
